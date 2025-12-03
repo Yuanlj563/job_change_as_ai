@@ -20,6 +20,7 @@ ROOT = Path(__file__).resolve().parent
 TEXT_BREAK_TAGS = re.compile(r"</?(p|br\s*/?)>", flags=re.IGNORECASE)
 WHITESPACE = re.compile(r"\s+")
 
+
 def clean_text(value: object) -> str:
     """Remove simple HTML tags, unescape entities, trim whitespace."""
     if pd.isna(value):
@@ -122,7 +123,7 @@ def main():
     all_dfs = []
 
     # 1. Bilibili
-    for p in collect_files("bilibili_comments_*.csv"):
+    for p in collect_files("data/data_bilibili/bilibili_comments_*.csv"):
         print(f"Processing Bilibili: {p.name}")
         try:
             all_dfs.append(load_bilibili(p))
@@ -130,7 +131,7 @@ def main():
             print(f"Error loading {p.name}: {e}")
 
     # 2. Zhihu
-    for p in collect_files("zhihu_comments_*.csv"):
+    for p in collect_files("data/data_zhihu/zhihu_comments_*.csv"):
         print(f"Processing Zhihu: {p.name}")
         try:
             all_dfs.append(load_zhihu(p))
@@ -138,7 +139,7 @@ def main():
             print(f"Error loading {p.name}: {e}")
             
     # 3. Reddit
-    for p in collect_files("reddit_comments_*.csv"):
+    for p in collect_files("data/data_reddit/reddit_comments_*.csv"):
         print(f"Processing Reddit: {p.name}")
         try:
             all_dfs.append(load_reddit(p))
@@ -146,7 +147,7 @@ def main():
             print(f"Error loading {p.name}: {e}")
 
     # 4. V2EX
-    for p in collect_files("v2ex_comments_*.csv"):
+    for p in collect_files("data/data_v2ex/v2ex_comments_*.csv"):
         print(f"Processing V2EX: {p.name}")
         try:
             all_dfs.append(load_v2ex(p))
@@ -167,7 +168,7 @@ def main():
     # Sort
     combined = combined.sort_values(["platform", "created_at"], ascending=[True, True])
 
-    output_file = ROOT / "all_comments_cleaned.csv"
+    output_file = ROOT / "data" / "all_comments_cleaned.csv"
     combined.to_csv(output_file, index=False, encoding="utf-8-sig")
     
     print("\n=== 清洗完成 ===")

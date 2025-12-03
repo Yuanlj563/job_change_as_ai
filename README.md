@@ -47,26 +47,3 @@
 第三方工具：echart/gephi/tableau  集收客/火车头/八爪鱼  ...
                                            
 // 欢迎建议，我不断完善这个文档
-
-### 运行与输出（分析脚本 data_analysis_dashboard.py）
-- 运行分析脚本
-  - 在项目根目录执行:
-    ```
-    python data_analysis_dashboard.py
-    ```
-  - 程序将读取 `all_comments_cleaned.csv`，输出若干高质量图表并保存在 `outputs/plots/` 目录中。
-- 依赖安装
-  - 使用仓库根目录的依赖清单进行安装:
-    ```
-    pip install -r requirements.txt
-    ```
-- 输出物
-  - 主要图表包括：
-    - `analysis_sentiment_distribution.png`
-    - `analysis_sentiment_trend.png`
-    - `analysis_wordcloud.png`
-    - `analysis_lda_topics.png`
-    - `analysis_job_impact.png`
-    - `analysis_time_series_comments.png`
-    - `analysis_sentiment_vs_length.png`
-  - 关键统计和中间结果可在控制台看到（日志形式）。

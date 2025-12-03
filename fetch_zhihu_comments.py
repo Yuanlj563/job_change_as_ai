@@ -205,6 +205,7 @@ def save_to_csv(answer_id: str, comments: List[ZhihuComment]) -> str:
 
 def main() -> None:
     print("=== 知乎评论抓取工具 ===")
+
     raw_input = prompt_if_empty("", "请输入 answer 号：")
     
     # 自动清理输入，只保留数字 ID
@@ -213,7 +214,7 @@ def main() -> None:
     # 2. 如果用户输入的是完整网址，尝试提取最后一部分
     if '/' in answer_id:
         answer_id = answer_id.split('/')[-1]
-    
+
     user_agent = prompt_if_empty("", "请输入 User-Agent：")
     cookie = prompt_if_empty("", "请输入 cookie：")
 
